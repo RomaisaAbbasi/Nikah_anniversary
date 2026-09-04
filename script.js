@@ -1,5 +1,5 @@
 /* =========================================================
-   HOORAIN & TAIMOOR — ANNIVERSARY WEBSITE
+   HOORNAIN & TAIMOOR — ANNIVERSARY WEBSITE
    BOOK / CHAPTER PAGINATION VERSION
    ========================================================= */
 
