@@ -6,6 +6,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
+     BACKGROUND MUSIC
+     ========================================================= */
+
+  const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+  function startBackgroundMusic() {
+
+    backgroundMusic.volume = 0.45;
+
+    backgroundMusic.play().catch((error) => {
+
+      console.log(
+        "Music could not start:",
+        error
+      );
+
+    });
+
+  }
+
+  /*
+     Browsers usually block autoplay with sound.
+     Music will start on the first click/tap anywhere
+     on the website.
+  */
+
+  document.addEventListener(
+    'pointerdown',
+    startBackgroundMusic,
+    { once: true }
+  );
+
+
+  /* =========================================================
      1. LOADING SCREEN
      ========================================================= */
 
