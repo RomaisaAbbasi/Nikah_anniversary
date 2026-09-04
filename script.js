@@ -9,14 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
      BACKGROUND MUSIC
      ========================================================= */
 
-  const backgroundMusic =
-    document.getElementById("backgroundMusic");
+ const backgroundMusic =
+  document.getElementById("backgroundMusic");
 
-  function startBackgroundMusic() {
+function startBackgroundMusic() {
 
-    backgroundMusic.volume = 0.45;
+  if (!backgroundMusic) return;
 
-    backgroundMusic.play().catch((error) => {
+  backgroundMusic.volume = 0.45;
+
+  const playPromise =
+    backgroundMusic.play();
+
+  if (playPromise !== undefined) {
+
+    playPromise.catch((error) => {
 
       console.log(
         "Music could not start:",
@@ -27,18 +34,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
-  /*
-     Browsers usually block autoplay with sound.
-     Music will start on the first click/tap anywhere
-     on the website.
-  */
+}
 
-  document.addEventListener(
-    'pointerdown',
-    startBackgroundMusic,
-    { once: true }
-  );
 
+/* =========================================================
+   MOBILE + DESKTOP MUSIC
+   Start music from the first real user interaction
+   ========================================================= */
+
+document.addEventListener(
+  'pointerdown',
+  startBackgroundMusic,
+  {
+    once: true,
+    passive: true
+  }
+);
+
+document.addEventListener(
+  'touchstart',
+  startBackgroundMusic,
+  {
+    once: true,
+    passive: true
+  }
+);
+
+document.addEventListener(
+  'click',
+  startBackgroundMusic,
+  {
+    once: true
+  }
+);
+   
 
   /* =========================================================
      1. LOADING SCREEN
